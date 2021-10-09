@@ -1,0 +1,218 @@
+/* ------- resubmit styles ------ */
+.bg-dark {background-color: #3b579d!important;}
+.rounded {border-radius: 37px !important;}
+.h1, h1  {font-size: 2.15rem; color: #16abe4;}
+body {
+	font-family:"Inter UI", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+a {color: #7690b0;}
+
+/* ------- end ------ */
+
+.box2 {width: 100%;}
+
+.lineart {
+	background-image: url(i/bg.svg);
+    padding-top: 170px;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: bottom;
+}
+
+/* ------- card flip ------ */
+.flip-container {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
+}
+
+.flip-container .flipper.rotate {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.flip-container,
+.front,
+.back {
+  width: 100%;
+  height: 400px;
+}
+
+.flipper {
+  -webkit-transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 0.6s;
+  -moz-transform-style: preserve-3d;
+  -o-transition: 0.6s;
+  -o-transform-style: preserve-3d;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.front,
+.back {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.1),
+    0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+/* ------- card flip end ------ */
+
+
+.example {
+    color: #000;
+    border: none;
+    text-align: center;
+}
+
+.bubble-wrap {
+  overflow: hidden;
+  height: 600px;
+}
+
+.bubbles {
+  position: relative;
+  background: salmon;
+}
+
+.bubble {
+  position: absolute;
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  background-image: url("i/spritesheet.png");
+  background-size: 1076px 1076px;
+}
+
+.logo1 { background-position:   0      0; }
+.logo2 { background-position:  -154px  0; }
+.logo3 { background-position:  -308px  0; }
+.logo4 { background-position:  -462px  0; }
+.logo5 { background-position:  -616px  0; }
+.logo6 { background-position:  -770px  0; }
+.logo7 { background-position:  -924px  0; }
+.logo8 { background-position:   0     -154px; }
+.logo9 { background-position:  -154px -154px; }
+.logo10 { background-position: -308px -154px; }
+.logo11 { background-position: -462px -154px; }
+.logo12 { background-position: -616px -154px; }
+.logo13 { background-position: -770px -154px; }
+.logo14 { background-position: -924px -154px; }
+.logo15 { background-position:  0     -308px; }
+.logo16 { background-position: -154px -308px; }
+.logo17 { background-position: -308px -308px; }
+.logo18 { background-position: -462px -308px; }
+.logo19 { background-position: -616px -308px; }
+.logo20 { background-position: -770px -308px; }
+.logo21 { background-position: -924px -308px; }
+.logo22 { background-position:  0     -462px; }
+.logo23 { background-position: -154px -462px; }
+.logo24 { background-position: -308px -462px; }
+.logo25 { background-position: -462px -462px; }
+.logo26 { background-position: -616px -462px; }
+.logo27 { background-position: -770px -462px; }
+.logo28 { background-position: -924px -462px; }
+.logo29 { background-position:  0     -616px; }
+.logo30 { background-position: -154px -616px; }
+.logo31 { background-position: -308px -616px; }
+.logo32 { background-position: -462px -616px; }
+.logo33 { background-position: -616px -616px; }
+
+body {
+  background: #0e243c;;
+}
+
+
+
+/* ------- chars changer ------ */
+.ticker {
+	display: inline-block;
+    overflow: hidden;
+    font-size: 2rem;
+    height: 2rem;
+    line-height: 1.3;
+    margin-bottom: -7px;
+    font-family: monospace;
+}
+
+.chars {
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;  
+}
+
+.chars-1 {
+  animation-name: ticker-1;  
+}
+
+.chars-2 {
+  animation-name: ticker-2;
+  animation-delay: 0.1s;
+}
+
+.chars-3 {
+  animation-name: ticker-3;
+  animation-delay: 0.2s;
+}
+
+.char {
+  display: block;
+}
+
+@keyframes ticker-1 {
+  0% { transform: translateY(0%); }
+  10% { transform: translateY(-18.75%); }
+  30% { transform: translateY(-18.75%); }
+  40% { transform: translateY(-50%); }
+  60% { transform: translateY(-50%); }
+  70% { transform: translateY(-87.5%); }
+  99.9% { transform: translateY(-87.5%); }
+}
+
+@keyframes ticker-2 {
+  0% { transform: translateY(0%); }
+  10% { transform: translateY(-31.25%); }
+  30% { transform: translateY(-31.25%); }
+  40% { transform: translateY(-62.5%); }
+  60% { transform: translateY(-62.5%); }
+  70% { transform: translateY(-87.5%); }
+  99.9% { transform: translateY(-87.5%); }
+}
+
+@keyframes ticker-3 {
+  0% { transform: translateY(0%); }
+  10% { transform: translateY(-50%); }
+  30% { transform: translateY(-50%); }
+  40% { transform: translateY(-68.75%); }
+  60% { transform: translateY(-68.75%); }
+  70% { transform: translateY(-87.5%); }
+  99.9% { transform: translateY(-87.5%); }
+}
+
+
+/* ------- pipets ------ */
+
+#examplePre {
+  overflow-x: scroll;
+}

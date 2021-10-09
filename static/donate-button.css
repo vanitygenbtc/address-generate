@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
+}
+.btn-bitcoin {
+  display: flex!important;
+  align-items: center!important;
+  font-size: 14px;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'Montserrat';
+  width: 160px;
+  height: 45px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #f8e9c0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f4ca5d), to(#f4b840));
+  background-image: linear-gradient(#f4ca5d, #f4b840);
+  color: #333;
+  text-transform: uppercase;
+  -webkit-transition: width 0.35s ease;
+  transition: width 0.35s ease;
+}
+.btn-bitcoin span {
+  display: block;
+}
+.btn-bitcoin .currency {
+  font-size: 1.1em;
+}
+.btn-bitcoin .currency:before {
+  content: 'Pay with';
+  font-size: 0.65em;
+  display: block;
+}
+.btn-bitcoin .symbol {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  font-size: 2.3em;
+  border: 2px solid #333;
+  border-radius: 360px;
+  padding: 4px;
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  line-height: 1em;
+  margin-right: 5px;
+}
+.btn-bitcoin p {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  padding: 0;
+  margin: 0;
+}
+.btn-bitcoin .symbol,
+.btn-bitcoin p {
+  display: inline-block;
+  white-space: nowrap;
+}
+.btn-bitcoin:hover p {
+  -webkit-transform: translateX(120px);
+          transform: translateX(120px);
+}
+.btn-bitcoin:hover .symbol {
+  -webkit-transform: translateX(60px);
+          transform: translateX(60px);
+}
+.btn-bitcoin.opened {
+  width: 390px;
+}
+.btn-bitcoin.opened:hover p {
+  -webkit-transform: inherit;
+          transform: inherit;
+  cursor: text;
+}
+.btn-bitcoin.opened:hover .symbol {
+  -webkit-transform: inherit;
+          transform: inherit;
+}
+.btn-bitcoin.opened .currency {
+  text-transform: initial;
+}
+.btn-bitcoin.opened .currency:before {
+  content: 'Thank you !';
+  text-transform: uppercase;
+}
+.btn-bitcoin.donate .currency:before {
+  content: 'Make a donation';
+  font-size: 0.65em;
+  display: block;
+}
+.btn-bitcoin.donate.opened .currency:before {
+  content: 'wow such generous !';
+}
+.btn-bitcoin.black {
+  color: #fbbc3a;
+  border-color: #323520;
+  background-image: none;
+  background-color: #272515;
+}
+.btn-bitcoin.black .symbol {
+  border-color: #fbbc3a;
+}
+.btn-bitcoin.black.opened:after {
+  background-color: #272515;
+  border-color: #323520;
+}
+p.wow {
+  text-align: center;
+  font-family: 'Comic Sans MS';
+}
+.btn-bitcoin {
+  margin: 20px auto;
+}

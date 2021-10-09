@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from www.vanitygen.net/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Sep 2021 01:51:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+-->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+-->
+<link rel="stylesheet" href="static/bootstrap.min.css">
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/anim.css">
+
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+	
+	
+<title>Bitcoin Vanity Address</title>
+</head>
+<body>
+<nav class="container navbar navbar-expand-sm">
+  <h1><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="static/i/vanitygen.svg" class="mr-1" width="200" alt="bitcoin logo"/></a></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarsExample03">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">How to</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown03">
+			<a class="dropdown-item" href="import_a_private_key_into_blockchain_com.html">import key into Blockchain.info</a>
+			<a class="dropdown-item" href="import_a_private_key_into_btc_com.html">import key into btc.com</a>
+			<a class="dropdown-item" href="import_a_private_key_into_electrum_wallet.html">import key into Electrum</a>
+			<a class="dropdown-item" href="import_a_private_key_into_bitcoin-qt_app.html">import key into Bitcoin QT</a>
+			<a class="dropdown-item" href="import_a_private_key_into_armory.html">import key into Armory</a>
+			<a class="dropdown-item" href="generate_vanity_address.html">generate vanity address</a>
+		</div>
+      </li>
+      <li class="nav-item"> <a class="nav-link" href="price.html">Price</a> </li>
+      <li class="nav-item"> <a class="nav-link" href="faq.html">F.A.Q.</a> </li>
+      <li class="nav-item"> <a class="nav-link" href="contact_us.html">Contact us</a> </li>
+    </ul>
+  </div>
+</nav> 
+<!-- partial:index.partial.html -->
+<div class="bubble-wrap">
+  <div class="bubbles"> </div>
+  <div class="d-flex justify-content-center align-items-center" style="height: 600px;">
+    <div class="ourtrainers col-md-5">
+      <div class="flip-container animation fadeInDown">
+        <div class="flipper">
+          <div class="front rounded bg-white d-flex align-items-center">
+            <div class="box1 px-4 col-md-12 text-white">
+              <h1 class="text-center pb-3">Bitcoin Vanity Address</h1>
+              <span id="ill"><span style="color: #ff0000;"></span></span>
+              <form class="pure-form pure-form-aligned" method="post" id="reg-form">
+                <fieldset>
+                  <div class="">
+                    <input name="gen" type="text" id="gen" class="form-control" placeholder="Enter desired word or symbols (max. 9)" autocomplete="off" onkeyup="validatephone(this); test();" maxlength="9">
+                  </div>
+                  <script type="text/javascript">
+					  document.getElementById("gen").focus();
+					</script>
+                  <label for="case" class="pure-checkbox text-muted small">
+                    <input id="case" name="case" type="checkbox" onclick="test()">
+                    Case sensitive </label>
+                  <div class=" pt-3">
+                    <input name="email" type="text" class="form-control" id="email" placeholder="Email address to receive Private Key" autocomplete="on">
+                  </div>
+                  <div class="">
+                    <label for="ex" class="text-muted pt-4">The address will look like</label>
+                    <input id="ex" name="ex" type="text" class="example form-control font-weight-bold" placeholder="waiting..." disabled="" >
+                  </div>
+                  <div class="row text-muted pt-4" s="">
+                    <div class="col-md-6 ">
+                      <input id="price" type="email" class="form-control example bg-white text-left" placeholder="Price: free" disabled="" >
+                    </div>
+                    <div class="col-md-6 ">
+<button class="btn btn-primary" onclick="location.href='https://form.jotform.com/212813791635055';" target="_blank" style="font-size: 1.35em !important;">Bitcoin <i class="fab fa-btc"></i></button>                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+          <div class="back rounded bg-white d-flex align-items-center">
+            <div class="box2">
+              <div class="ourtrainers-text-back">
+                <div id="form" class="result p-3" style="text-align:left;"></div>
+                <div class="col-lg-12 text-muted text-center" style="cursor: pointer;" id="return">Return back.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+	<div class="row d-flex  justify-content-between align-items-start text-muted pt-5">
+	  <div class="col-md-6 animation fadeInUp">
+		<h2>What is a Bitcoin Vanity Address?</h2>
+		<p>It's a normal bitcoin address that starts with some string of characters that appeals to you.
+		  You will having a personalised atractive address for donations, visit card, well known on the community or easy to remember address on your website.<br>
+		  We generated <span class="font-weight-bold">0</span> addresses and all owners are happy <img src="static/emoji/happy-2.svg" alt="happy emoji" width="32"/></p>
+	  </div>
+	  <div class="col-md-5 animation fadeInUp">
+		<h2>Last Vanity Addresses:</h2>
+		<p class="text-monospace"><a href="https://btc.com/1BitcoinEaterAddressDontSendf59kuE" target="_blank" rel="noreferrer, nofollow">1<b class="text-secondary">BitcoinEaterAddressDontSend</b>f59kuE</a><br>
+		  <a href="https://btc.com/1SatoshiHHqnDPRSfiZ5GXJ8Gk9dbjO" target="_blank" rel="noreferrer, nofollow">1<strong class="text-secondary">Satoshi</strong>HHqnDPRSfiZ5GXJ8Gk9dbjO</a><br>
+		  <a href="https://btc.com/1234mNnAPb8YnCsbacaNhB4BqwxB4U4321" target="_blank" rel="noreferrer, nofollow"><strong class="text-secondary">1234</strong>mNnAPb8YnCsbacaNhB4BqwxB4U4321</a><br>
+		  <a href="https://btc.com/1234mNnAPb8YnCsbacaNhB4BqwxB4U4321" target="_blank" rel="noreferrer, nofollow"><strong class="text-secondary">1234</strong>mNnAPb8YnCsbacaNhB4BqwxB4U4321</a><br>
+		  <a href="https://btc.com/1Bit7E9uM1Vbt1Mn3WKtcEXc5uJxZtgt9W" target="_blank" rel="noreferrer, nofollow">1<strong class="text-secondary">Bit</strong>7E9uM1Vbt1Mn3WKtcEXc5uJxZtgt9W</a></p>
+	  </div>
+	</div>
+	
+	<div class="border-bottom lineart"></div>
+	<footer>
+		<div class="row">
+			<div class="col-md-3 pt-4 my-md-4 pt-md-4" >
+				<h5 class="text-muted">Widgets</h5>
+				<ul class="list-unstyled text-small">
+				  <li><a class="text-muted" href="widgets.html">Widget list</a></li>
+				  <li><a class="text-muted" href="crypto_donation_boxes.html">Crypto Donation Boxes</a></li>
+				  <li><a class="text-muted" href="donate_button.html">Donate Button</a></li>
+				  <li><a class="text-muted" href="donation_widget.html">Donation Widget</a></li>
+				</ul>
+			</div>
+		  <div class="col-md-4 pt-4 my-md-4 pt-md-4">
+			<h5 class="text-muted">How to</h5>
+			<ul class="list-unstyled text-small">
+			  <li><a class="text-muted" href="import_a_private_key_into_blockchain_com.html">Import a Private Key into blockchain.com</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_btc_com.html">Import a Private Key into btc.com wallet</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_electrum_wallet.html">Import a Private Key into Electrum wallet</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_bitcoin-qt_app.html">Import a Private Key into Bitcoin-QT app</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_armory.html">Import a Private Key into Armory</a></li>
+			  <li><a class="text-muted" href="generate_vanity_address.html">Generate vanity address</a></li>
+			</ul>
+		  </div>
+		  <div class="col-2 col-md pt-4 my-md-4 pt-md-4">
+			<h5 class="text-muted">About</h5>
+			<ul class="list-unstyled text-small">
+			  <li><a class="text-muted" href="price.html">Price</a></li>
+			  <li><a class="text-muted" href="faq.html">FAQ</a></li>
+			  <li><a class="text-muted" href="contact_us.html">Contact us</a></li>
+			</ul>
+		  </div>
+			<div class="col-md-1 d-none d-md-block" >
+			<img alt="Sloan, the sloth mascot" width="52" height="120" style="margin-top: -3px;" class="swing mb-5" src="static/i/sloth.png"><br>
+			<a href="https://apirone.com/" target="_blank" class="mt-5"><img src="static/i/apirone_logo_construction.svg" alt="Apirone crypto processing" class="img-fluid"/></a>
+			</div>
+		</div>
+	  </footer></div>
+<script>
+
+function validatephone(xxxxx) 
+{
+	var maintainplus = '';
+	var numval = xxxxx.value
+	if ( numval.charAt(0)=='+' )
+	{
+		var maintainplus = '';
+	}
+	curphonevar = numval.replace(/[Ol0I]/g,'');
+	if (numval != curphonevar){
+	document.getElementById('ill').innerHTML = '<span style="color: #ff0000;">Choose any chars from Base58 alphabet</span> <a href="bitcoinvanityaddress.html"><span style="color: #979797;">FAQ</span></a>';	
+	}
+	xxxxx.value = maintainplus + curphonevar;
+
+	var maintainplus = '';
+	xxxxx.focus;
+}
+
+function test (){
+	var txt = document.getElementById('gen').value;
+var matches = txt.match(/\d+/g);
+if (matches != null) {
+//    alert('number');
+	document.getElementById("case").checked = true;		
+}
+	var free = "Price: Free";
+if(document.getElementById('case').checked){
+		if (txt.length  == 0){
+				document.getElementById('ex').value = "1" + txt + "keenYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;	
+	} else if (txt.length  == 1){
+		document.getElementById('ex').value = "1" + txt + "eenYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;
+	} else if (txt.length  == 2){
+				document.getElementById('ex').value = "1" + txt + "enYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;
+		} else if (txt.length  == 3){
+				document.getElementById('ex').value = "1" + txt + "nYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;
+		} else if (txt.length  == 4){
+				document.getElementById('ex').value = "1" + txt + "YwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0015 BTC';
+		} else if (txt.length  == 5){
+				document.getElementById('ex').value = "1" + txt + "whhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0025 BTC';
+//                document.getElementById('price').value = '0.03 BTC';
+		} else if (txt.length  == 6){
+				document.getElementById('ex').value = "1" + txt + "hhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0043 BTC';
+		} else if (txt.length  == 7){
+				document.getElementById('ex').value = "1" + txt + "hGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0217 BTC';
+		} else if (txt.length  == 8){
+				document.getElementById('ex').value = "1" + txt + "Gw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.1091 BTC';
+		} else if (txt.length  == 9){
+				document.getElementById('ex').value = "1" + txt + "w2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'impossible to generate';
+		} else if (txt.length  == 10){
+				document.getElementById('ex').value = "1" + txt + "2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'impossible to generate';
+		} else if (txt.length  == 11){
+				document.getElementById('ex').value = "1" + txt + "qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'impossible to generate';
+	}
+} else {
+		if (txt.length  == 0){
+				document.getElementById('ex').value = "1" + txt + "keenYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;
+		} else if (txt.length  == 1){
+				document.getElementById('ex').value = "1" + txt + "eenYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;
+		} else if (txt.length  == 2){
+				document.getElementById('ex').value = "1" + txt + "enYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;
+		} else if (txt.length  == 3){
+				document.getElementById('ex').value = "1" + txt + "nYwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = free;
+		} else if (txt.length  == 4){
+				document.getElementById('ex').value = "1" + txt + "YwhhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.001 BTC';
+		} else if (txt.length  == 5){
+				document.getElementById('ex').value = "1" + txt + "whhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0015 BTC';
+		} else if (txt.length  == 6){
+				document.getElementById('ex').value = "1" + txt + "hhGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0025 BTC';
+		} else if (txt.length  == 7){
+				document.getElementById('ex').value = "1" + txt + "hGw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0043 BTC';
+		} else if (txt.length  == 8){
+				document.getElementById('ex').value = "1" + txt + "Gw2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'Price: 0.0195 BTC';
+		} else if (txt.length  == 9){
+				document.getElementById('ex').value = "1" + txt + "w2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'impossible to generate';
+		} else if (txt.length  == 10){
+				document.getElementById('ex').value = "1" + txt + "2qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'impossible to generate';
+		} else if (txt.length  == 11){
+				document.getElementById('ex').value = "1" + txt + "qpNijzfnKcbCG4z3hnrVA";
+				document.getElementById('price').value = 'impossible to generate';
+		}
+}
+}
+	
+</script> 
+
+<!-- partial --> 
+<script src="../cdn.rawgit.com/josephg/noisejs/master/perlin.js"></script> 
+<script  src="static/script.js"></script> 
+
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> --> 
+<!--
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+-->
+<script src="static/jquery-3.5.1.min.js"></script>
+<script src="static/popper.min.js"></script>
+<script src="static/bootstrap.min.js"></script>	
+<script  src="static/animations.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function()
+{	
+
+
+	!function(){function r(r,t,e){var a;return a=Math.ceil(t/bpe)+1,a=e>a?e:a,buff=new Array(a),n(buff,r),buff}function n(r,t){var n,e;for(e=t,n=0;n<r.length;n++)r[n]=e&mask,e>>=bpe}function e(r,t){return t>>>r|t<<32-r}function a(r,t,n){return r&t^~r&n}function o(r,t,n){return r&t^r&n^t&n}function u(r){return e(2,r)^e(13,r)^e(22,r)}function f(r){return e(6,r)^e(11,r)^e(25,r)}function s(r){return e(7,r)^e(18,r)^r>>>3}function i(r){return e(17,r)^e(19,r)^r>>>10}function c(r,t){return r[15&t]+=i(r[t+14&15])+r[t+9&15]+s(r[t+1&15])}function _(r,t){var n=(65535&r)+(65535&t),e=(r>>16)+(t>>16)+(n>>16);return e<<16|65535&n}function h(){A=new Array(8),y=new Array(2),C=new Array(64),y[0]=y[1]=0,A[0]=1779033703,A[1]=3144134277,A[2]=1013904242,A[3]=2773480762,A[4]=1359893119,A[5]=2600822924,A[6]=528734635,A[7]=1541459225}function v(){var r,t,n,e,s,i,h,v,g,b,d=new Array(16);r=A[0],t=A[1],n=A[2],e=A[3],s=A[4],i=A[5],h=A[6],v=A[7];for(var m=0;16>m;m++)d[m]=C[(m<<2)+3]|C[(m<<2)+2]<<8|C[(m<<2)+1]<<16|C[m<<2]<<24;for(var p=0;64>p;p++)g=v+f(s)+a(s,i,h)+k[p],g+=16>p?d[p]:c(d,p),b=u(r)+o(r,t,n),v=h,h=i,i=s,s=_(e,g),e=n,n=t,t=r,r=_(g,b);A[0]+=r,A[1]+=t,A[2]+=n,A[3]+=e,A[4]+=s,A[5]+=i,A[6]+=h,A[7]+=v}function g(r,t){var n,e,a=0;e=y[0]>>3&63;var o=63&t;for((y[0]+=t<<3)<t<<3&&y[1]++,y[1]+=t>>29,n=0;t>n+63;n+=64){for(var u=e;64>u;u++)C[u]=r.charCodeAt(a++);v(),e=0}for(var u=0;o>u;u++)C[u]=r.charCodeAt(a++)}function b(){var r=y[0]>>3&63;if(C[r++]=128,56>=r)for(var t=r;56>t;t++)C[t]=0;else{for(var t=r;64>t;t++)C[t]=0;v();for(var t=0;56>t;t++)C[t]=0}C[56]=y[1]>>>24&255,C[57]=y[1]>>>16&255,C[58]=y[1]>>>8&255,C[59]=255&y[1],C[60]=y[0]>>>24&255,C[61]=y[0]>>>16&255,C[62]=y[0]>>>8&255,C[63]=255&y[0],v()}function d(){for(var r=new String,t=0;8>t;t++)for(var n=28;n>=0;n-=4)r+=x.charAt(A[t]>>>n&15);return r}function m(r){return h(),g(r,r.length),b(),d()}function p(r){if(0===r.length)return[];var t,n,e=[0];for(t=0;t<r.length;t++){var a=r[t];if(!(a in S))throw new Error("Non-base58 character");for(n=0;n<e.length;n++)e[n]*=D;e[0]+=S[a];var o=0;for(n=0;n<e.length;++n)e[n]+=o,o=e[n]>>8,e[n]&=255;for(;o;)e.push(255&o),o>>=8}for(t=0;"1"===r[t]&&t<r.length-1;t++)e.push(0);for(e=e.reverse(),output="",t=0;t<e.length;t++)output+=String.fromCharCode(e[t]);return output}function l(r){try{var t=p(r);if(25!=t.length)return!1;var n=t.substr(t.length-4),e=t.substr(0,t.length-4),a=w(m(w(m(e)))).substr(0,4);return n!=a?!1:!0}catch(o){return!1}}function w(r){for(var t="",n=0;n<r.length;n+=2)t+=String.fromCharCode(parseInt(r.substr(n,2),16));return t}for(bpe=0,mask=0,radix=mask+1,digitsStr="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_=!@#$%^&*()[]{}|;:,.<>/?`~ \\'\"+-",bpe=0;1<<bpe+1>1<<bpe;bpe++);bpe>>=1,mask=(1<<bpe)-1,radix=mask+1,one=r(1,1,1),t=new Array(0),ss=t,s0=t,s1=t,s2=t,s3=t,s4=t,s5=t,s6=t,s7=t,T=t,sa=t,mr_x1=t,mr_r=t,mr_a=t,eg_v=t,eg_u=t,eg_A=t,eg_B=t,eg_C=t,eg_D=t,md_q1=t,md_q2=t,md_q3=t,md_r=t,md_r1=t,md_r2=t,md_tt=t,primes=t,pows=t,s_i=t,s_i2=t,s_R=t,s_rm=t,s_q=t,s_n1=t,s_a=t,s_r2=t,s_n=t,s_b=t,s_d=t,s_x1=t,s_x2=t,s_aa=t,rpprb=t;for(var A,y,C,k=new Array(1116352408,1899447441,3049323471,3921009573,961987163,1508970993,2453635748,2870763221,3624381080,310598401,607225278,1426881987,1925078388,2162078206,2614888103,3248222580,3835390401,4022224774,264347078,604807628,770255983,1249150122,1555081692,1996064986,2554220882,2821834349,2952996808,3210313671,3336571891,3584528711,113926993,338241895,666307205,773529912,1294757372,1396182291,1695183700,1986661051,2177026350,2456956037,2730485921,2820302411,3259730800,3345764771,3516065817,3600352804,4094571909,275423344,430227734,506948616,659060556,883997877,958139571,1322822218,1537002063,1747873779,1955562222,2024104815,2227730452,2361852424,2428436474,2756734187,3204031479,3329325298),x="0123456789abcdef",q="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz",S={},B=0;B<q.length;B++)S[q.charAt(B)]=B;var D=58;window.checkAddress=l}();
+
+
+
+$('#gen').keypress(function(event) {
+	q="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+	if(q.indexOf(event.key) === -1) {
+		event.preventDefault();
+	} else {
+		return true;
+	}
+});
+
+$('#gen').on("input", function(event) {
+	q="123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+	$('#gen').removeClass('text-danger');
+    $('#gen').removeClass('is-invalid');
+    $('#gen').removeClass('is-valid');
+    let iter=0;
+	for(iter; iter<event.target.value.length;iter++){
+	if(q.indexOf(event.target.value[iter]) === -1) {
+		event.preventDefault();
+	$('#gen').removeClass('is-valid');
+    $('#gen').addClass('is-invalid');
+    $('#gen').addClass('text-danger');
+		$('#gen').val("");
+		break;
+	} 
+	if(iter===event.target.value.length-1){
+		$('#gen').addClass('is-valid');
+	}
+	}
+});
+
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function validate() {
+  const $result = $("#email");
+  const email = $("#email").val();
+  if (validateEmail(email)) {
+    $result.removeClass('text-danger');
+    $result.removeClass('is-invalid');
+    $result.addClass('is-valid');
+    
+  } else {
+    $result.removeClass('is-valid');
+    $result.addClass('is-invalid');
+    $result.addClass('text-danger');
+  }
+  return false;
+}
+
+$('#email').on('input key', validate);
+
+	$(document).on('submit', '#reg-form', function()
+	{
+
+	if($('#gen').hasClass("is-valid") && $('#email').hasClass("is-valid")) {
+		console.log("ok");
+	} else {
+		console.log("error");
+		event.preventDefault();
+	}
+
+		var data = $(this).serialize();
+		
+		$.ajax({
+		
+		type : 'POST',
+		url  : 'payment.php',
+		data : data,
+		success :  function(data)
+				   {						
+//						$("#reg-form").fadeOut(500).hide(function()
+						$("#reg-form").show(function()
+						{
+							$(".result").fadeIn(500).show(function()
+							{
+								$(".result").html(data);
+							});
+						});
+						
+				   }
+		});
+		return false;
+	});
+});
+</script> 
+<script>
+	$('.submit').click(function(event){
+	if($('#gen').hasClass("is-valid") && $('#email').hasClass("is-valid")) {
+		 $('.flipper').toggleClass('rotate');
+	} else {
+		if(!$('#gen').hasClass("is-valid")){
+			$('#gen').addClass('is-invalid');
+		}
+		if(!$('#email').hasClass("is-valid")){
+			$('#email').addClass('is-invalid');
+		}
+		event.preventDefault();
+	}
+	});
+	$('#return').click(function(){
+		$('.flipper').toggleClass('rotate');
+	});
+	
+	
+</script>
+<script>
+
+</script>
+</body>
+
+<!-- Mirrored from www.vanitygen.net/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Sep 2021 01:51:00 GMT -->
+</html>

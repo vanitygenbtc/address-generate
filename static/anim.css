@@ -1,0 +1,125 @@
+/* CSS Document */
+.animation {
+    visibility: hidden;
+    animation-play-state: paused
+}
+
+.animate {
+    visibility: visible;
+    animation-fill-mode: both;
+    animation-play-state: running
+}
+
+    .animate.fadeInRight {
+        animation-duration: 2s;
+        animation-name: g
+    }
+
+    .animate.fadeInLeft {
+        animation-duration: 2s;
+        animation-name: f
+    }
+
+    .animate.fadeInDown {
+        animation-duration: 1s;
+        animation-name: d
+    }
+
+    .animate.fadeInUp {
+        animation-duration: 1s;
+        animation-name: e
+    }
+
+@keyframes d {
+    0% {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        opacity: 0;
+        transform: translateY(-20px)
+    }
+
+    to {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes e {
+    0% {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        opacity: 0;
+        transform: translateY(20px)
+    }
+
+    to {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes f {
+    0% {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        opacity: 0;
+        transform: translateX(-200px)
+    }
+
+    to {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes g {
+    0% {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        opacity: 0;
+        -webkit-transform: translateX(200px)
+    }
+
+    to {
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+        opacity: 1;
+        -webkit-transform: translateX(0)
+    }
+}
+
+/* swing */
+
+.swing:hover {
+    animation: swing ease-in-out 1s infinite alternate;
+    transform-origin: center -20px;
+    float:left;
+}
+.swing img {
+    border: 5px solid #f8f8f8;
+    display: block;
+}
+.swing:after{
+    content: '';
+    position: absolute;  
+    width: 20px; height: 20px;  
+    border: 1px solid #999;
+    top: -10px; left: 50%;
+    z-index: 0;
+    border-bottom: none;
+    border-right: none;
+    transform: rotate(45deg);
+}
+/* nail */
+.swing:before{
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    top: -14px;left: 54%;
+    z-index: 5;
+    border-radius: 50% 50%;
+    background: #000;
+}
+ 
+@keyframes swing {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}

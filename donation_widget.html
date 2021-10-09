@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+
+<!-- Mirrored from www.vanitygen.net/donation_widget.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Sep 2021 01:50:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+-->
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+-->
+<link rel="stylesheet" href="static/bootstrap.min.css">
+	
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/anim.css">
+
+<link rel="stylesheet" href="static/atom-one-dark.css">
+<script src="static/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link rel="stylesheet" href="static/hover-min.css">
+<link rel="stylesheet" href="static/donation-widget-style.css">
+
+<title>Donate Button</title>
+</head>
+<body>
+<nav class="container navbar navbar-expand-sm">
+  <h1><a class="navbar-brand d-flex align-items-center" href="index.html"><img src="static/i/vanitygen.svg" class="mr-1" width="200" alt="bitcoin logo"/></a></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarsExample03">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">How to</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown03">
+			<a class="dropdown-item" href="import_a_private_key_into_blockchain_com.html">import key into Blockchain.info</a>
+			<a class="dropdown-item" href="import_a_private_key_into_btc_com.html">import key into btc.com</a>
+			<a class="dropdown-item" href="import_a_private_key_into_electrum_wallet.html">import key into Electrum</a>
+			<a class="dropdown-item" href="import_a_private_key_into_bitcoin-qt_app.html">import key into Bitcoin QT</a>
+			<a class="dropdown-item" href="import_a_private_key_into_armory.html">import key into Armory</a>
+			<a class="dropdown-item" href="generate_vanity_address.html">generate vanity address</a>
+		</div>
+      </li>
+      <li class="nav-item"> <a class="nav-link" href="price.html">Price</a> </li>
+      <li class="nav-item"> <a class="nav-link" href="faq.html">F.A.Q.</a> </li>
+      <li class="nav-item"> <a class="nav-link" href="contact_us.html">Contact us</a> </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb" style="background-color: inherit;">
+	<li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+	<li class="breadcrumb-item"><a href="widgets.html">Widgets</a></li>
+	<li class="breadcrumb-item active" aria-current="page">Donate Button</li>
+  </ol>
+</nav>	
+<h1 class="pt-5 pb-3 text-center animation fadeInDown">Donation Widget</h1>
+
+	<div class="row">
+		<div class="col-md-6">
+		
+			<!-- partial:index.partial.html -->
+			<div id="widget"></div>
+
+			<!-- templates section -->
+
+			<!-- step 1 select amount -->
+			<template id="stage-1-template">
+			  <div class="stage-1">
+				<i><svg class="lnr lnr-gift hvr-buzz"><use xlink:href="#lnr-gift"></use></svg></i>
+				<p>If you like this content, please consider supporting the team with a donation.</p>
+				<button v-show="!showSelection" v-on:click="donate()" class="hvr-grow-shadow">Donate {{amount}} BTC</button>
+				  <select @change="triggerAmountChange()" v-model="amount" v-show="showSelection">
+					<option>0.01</option>
+					<option>0.05</option>
+					<option>0.1</option>
+					<option>0.15</option>
+					<option>0.25</option>
+				  </select>
+				<a href="#" v-on:click="selectAmount()">Select other amount</a>
+			  </div>
+			</template>
+
+			<!-- step 2, draw QR code -->
+			<template id="stage-2-template">
+			   <div class="stage-2">
+				 <i v-on:click="goBack()"><svg class="lnr lnr-cross"><use xlink:href="#lnr-cross"></use></svg></i>
+				 <p class="explanation"><strong>Thank you for your {{amount}} BTC donation!</strong><br>Here's the code that you can scan with you wallet app and a link below, that you can copy to your Bitcoin client</p>
+				  <div id="qr-code-container"></div>
+				  <textarea @click="select">{{ethLink}}</textarea>
+				 <transition name="slide-fade">
+				 <p class="notification" v-if="showNotification">Link copied!</p>
+					</transition>
+			  </div>
+			</template>
+			<!--  main app -->
+			<template id="eth-widget-template">
+			  <div class="eth-donation-widget">
+				<transition name="slide-fade">
+				<stage-two v-if="checkStage(2)" :amount="amount" v-on:changestage="changeStage"></stage-two>
+				   </transition>
+
+				<stage-one v-if="checkStage(1)" :amount="amount" v-on:changestage="changeStage"/>
+
+			  </div>
+			</template>
+			<!-- partial -->
+			
+		</div>
+		<div class="col-md-6 pt-2">
+		  	<a href="https://codepen.io/shershen08" target="_blank"><img src="static/i/codepen_logo.svg" alt="codepen logo" class="pt-3 pb-3" width="200"/></a><br>
+			Thanks to Mike <a href="https://codepen.io/shershen08" target="_blank">@shershen08</a><br>
+			Original source<a href="https://codepen.io/shershen08/pen/zdZYmJ" target="_blank"> https://codepen.io/shershen08/pen/zdZYmJ</a>
+		</div>
+	</div>
+	
+	<div class="text-muted row">
+	  <div class="col-md-12 py-4">
+		<h6 class="pb-1">HTML</h6>
+		  <pre><code class="html" style="height: 140px;"> &lt;!-- partial:index.partial.html --&gt;
+  &lt;div id=&quot;widget&quot;&gt;&lt;/div&gt;
+ &lt;!-- templates section --&gt;
+ &lt;!-- step 1 select amount --&gt;
+  &lt;template id=&quot;stage-1-template&quot;&gt;
+  &lt;div class=&quot;stage-1&quot;&gt;
+  &lt;i&gt;&lt;svg class=&quot;lnr lnr-gift hvr-buzz&quot;&gt;&lt;use xlink:href=&quot;#lnr-gift&quot;&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/i&gt;
+  &lt;p&gt;If you like this content, please consider supporting the team with a donation.&lt;/p&gt;
+  &lt;button v-show=&quot;!showSelection&quot; v-on:click=&quot;donate()&quot; class=&quot;hvr-grow-shadow&quot;&gt;Donate {{amount}} BTC&lt;/button&gt;
+  &lt;select @change=&quot;triggerAmountChange()&quot; v-model=&quot;amount&quot; v-show=&quot;showSelection&quot;&gt;
+  &lt;option&gt;0.01&lt;/option&gt;
+  &lt;option&gt;0.05&lt;/option&gt;
+  &lt;option&gt;0.1&lt;/option&gt;
+  &lt;option&gt;0.15&lt;/option&gt;
+  &lt;option&gt;0.25&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;a href=&quot;#&quot; v-on:click=&quot;selectAmount()&quot;&gt;Select other amount&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;/template&gt;
+ &lt;!-- step 2, draw QR code --&gt;
+  &lt;template id=&quot;stage-2-template&quot;&gt;
+  &lt;div class=&quot;stage-2&quot;&gt;
+  &lt;i v-on:click=&quot;goBack()&quot;&gt;&lt;svg class=&quot;lnr lnr-cross&quot;&gt;&lt;use xlink:href=&quot;#lnr-cross&quot;&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/i&gt;
+  &lt;p class=&quot;explanation&quot;&gt;&lt;strong&gt;Thank you for your {{amount}} BTC donation!&lt;/strong&gt;&lt;br&gt;Here's the code that you can scan with you wallet app and a link below, that you can copy to your Bitcoin client&lt;/p&gt;
+  &lt;div id=&quot;qr-code-container&quot;&gt;&lt;/div&gt;
+  &lt;textarea @click=&quot;select&quot;&gt;{{ethLink}}&lt;/textarea&gt;
+  &lt;transition name=&quot;slide-fade&quot;&gt;
+  &lt;p class=&quot;notification&quot; v-if=&quot;showNotification&quot;&gt;Link copied!&lt;/p&gt;
+  &lt;/transition&gt;
+  &lt;/div&gt;
+  &lt;/template&gt;
+  &lt;!--  main app --&gt;
+  &lt;template id=&quot;eth-widget-template&quot;&gt;
+  &lt;div class=&quot;eth-donation-widget&quot;&gt;
+  &lt;transition name=&quot;slide-fade&quot;&gt;
+  &lt;stage-two v-if=&quot;checkStage(2)&quot; :amount=&quot;amount&quot; v-on:changestage=&quot;changeStage&quot;&gt;&lt;/stage-two&gt;
+  &lt;/transition&gt;
+ &lt;stage-one v-if=&quot;checkStage(1)&quot; :amount=&quot;amount&quot; v-on:changestage=&quot;changeStage&quot;/&gt;
+ &lt;/div&gt;
+  &lt;/template&gt;
+  &lt;!-- partial --&gt;
+</code></pre>
+		</div>
+	  <div class="col-md-6">
+			<h6 class="pb-1">CSS</h6>
+		  <pre><code class="css" style="height: 400px;">@font-face {<br>  font-family: 'Montserrat';<br>  font-style: normal;<br>  font-weight: 400;<br>  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');<br>}<br>.btn-bitcoin {<br>  display: flex!important;<br>  align-items: center!important;<br>  font-size: 14px;<br>  white-space: nowrap;<br>  position: relative;<br>  overflow: hidden;<br>  cursor: pointer;<br>  font-family: 'Montserrat';<br>  width: 160px;<br>  height: 45px;<br>  padding: 5px 10px;<br>  border-radius: 5px;<br>  border: 1px solid #f8e9c0;<br>  background-image: -webkit-gradient(linear, left top, left bottom, from(#f4ca5d), to(#f4b840));<br>  background-image: linear-gradient(#f4ca5d, #f4b840);<br>  color: #333;<br>  text-transform: uppercase;<br>  -webkit-transition: width 0.35s ease;<br>  transition: width 0.35s ease;<br>}<br>.btn-bitcoin span {<br>  display: block;<br>}<br>.btn-bitcoin .currency {<br>  font-size: 1.1em;<br>}<br>.btn-bitcoin .currency:before {<br>  content: 'Pay with';<br>  font-size: 0.65em;<br>  display: block;<br>}<br>.btn-bitcoin .symbol {<br>  -webkit-transition: all 0.2s ease;<br>  transition: all 0.2s ease;<br>  font-size: 2.3em;<br>  border: 2px solid #333;<br>  border-radius: 360px;<br>  padding: 4px;<br>  width: 33px;<br>  height: 33px;<br>  text-align: center;<br>  line-height: 1em;<br>  margin-right: 5px;<br>}<br>.btn-bitcoin p {<br>  -webkit-transition: all 0.2s ease;<br>  transition: all 0.2s ease;<br>  padding: 0;<br>  margin: 0;<br>}<br>.btn-bitcoin .symbol,<br>.btn-bitcoin p {<br>  display: inline-block;<br>  white-space: nowrap;<br>}<br>.btn-bitcoin:hover p {<br>  -webkit-transform: translateX(120px);<br>          transform: translateX(120px);<br>}<br>.btn-bitcoin:hover .symbol {<br>  -webkit-transform: translateX(60px);<br>          transform: translateX(60px);<br>}<br>.btn-bitcoin.opened {<br>  width: 390px;<br>}<br>.btn-bitcoin.opened:hover p {<br>  -webkit-transform: inherit;<br>          transform: inherit;<br>  cursor: text;<br>}<br>.btn-bitcoin.opened:hover .symbol {<br>  -webkit-transform: inherit;<br>          transform: inherit;<br>}<br>.btn-bitcoin.opened .currency {<br>  text-transform: initial;<br>}<br>.btn-bitcoin.opened .currency:before {<br>  content: 'Thank you !';<br>  text-transform: uppercase;<br>}<br>.btn-bitcoin.donate .currency:before {<br>  content: 'Make a donation';<br>  font-size: 0.65em;<br>  display: block;<br>}<br>.btn-bitcoin.donate.opened .currency:before {<br>  content: 'wow such generous !';<br>}<br>.btn-bitcoin.black {<br>  color: #fbbc3a;<br>  border-color: #323520;<br>  background-image: none;<br>  background-color: #272515;<br>}<br>.btn-bitcoin.black .symbol {<br>  border-color: #fbbc3a;<br>}<br>.btn-bitcoin.black.opened:after {<br>  background-color: #272515;<br>  border-color: #323520;<br>}<br>p.wow {<br>  text-align: center;<br>  font-family: 'Comic Sans MS';<br>}<br>.btn-bitcoin {<br>  margin: 20px auto;<br>}</code></pre>
+		</div>
+		<div class="col-md-6">
+			<h6 class="pb-1">JS</h6>
+			<pre><code class="hljs" style="height: 400px;">/**
+  the library used: https://github.com/jibrelnetwork/ethereum-qr-code
+*/
+  const donationAdress = &quot;1DonateWffyhwAjskoEwXt83pHZxhLTr8H&quot;;
+const getQrCode = value =&gt; {
+  const qr = new EtheriumQRplugin.etheriumQRplugin();
+  const codeDetails = {
+  to: donationAdress,
+  value,
+  size: 180,
+  gas: 21000,
+  selector: &quot;#qr-code-container&quot;,
+  options: {
+  margin: 1 } };
+
+ return qr.toCanvas(codeDetails);
+  };
+const copyToClipboard = eventTarget =&gt; {
+  eventTarget.select();
+  document.execCommand('copy');
+  };
+const StageOne = Vue.component(&quot;StageOne&quot;, {
+  name: &quot;StageOne&quot;,
+  template: &quot;#stage-1-template&quot;,
+  props: {
+  amount: Number },
+ data: function () {
+  return {
+  showSelection: false };
+ },
+  methods: {
+  donate: function () {
+  this.$emit(&quot;changestage&quot;, [2, this.amount]);
+  },
+  selectAmount: function () {
+  this.showSelection = true;
+  },
+  triggerAmountChange: function () {
+  this.showSelection = false;
+  } } });
+&nbsp;
+const StageTwo = Vue.component(&quot;StageTwo&quot;, {
+  name: &quot;StageTwo&quot;,
+  template: &quot;#stage-2-template&quot;,
+  props: {
+  amount: Number },
+ data: function () {
+  return {
+  ethLink: &quot;&quot;,
+  showNotification: false };
+ },
+  methods: {
+  goBack: function () {
+  this.$emit(&quot;changestage&quot;, [1, this.amount]);
+  },
+  select: function (event) {
+  copyToClipboard(event.target);
+  this.showNotification = true;
+  } },
+ mounted: function () {
+  getQrCode(this.amount).then(result =&gt; {
+  this.ethLink = result.value;
+  });
+  },
+  updated: function () {
+  document.getElementById('qr-code-container').innerHTML = '';
+  getQrCode(this.amount).then(result =&gt; {
+  this.ethLink = result.value;
+  });
+  } });
+
+new Vue({
+  el: &quot;#widget&quot;,
+  template: &quot;#eth-widget-template&quot;,
+  components: { StageTwo, StageOne },
+  data: function () {
+  return {
+  stage: 1,
+  amount: 0.1 };
+ },
+  methods: {
+  checkStage: function (stage) {
+  return stage === this.stage;
+  },
+  changeStage: function (data) {
+  this.stage = data[0];
+  this.amount = data[1];
+  },
+  changeAmount: function (amount) {
+  this.amount = amount;
+  } } });
+</code></pre>
+	  </div>
+  </div>
+
+	<div class="border-bottom lineart"></div>
+	<footer>
+		<div class="row">
+			<div class="col-md-3 pt-4 my-md-4 pt-md-4" >
+				<h5 class="text-muted">Widgets</h5>
+				<ul class="list-unstyled text-small">
+				  <li><a class="text-muted" href="widgets.html">Widget list</a></li>
+				  <li><a class="text-muted" href="crypto_donation_boxes.html">Crypto Donation Boxes</a></li>
+				  <li><a class="text-muted" href="donate_button.html">Donate Button</a></li>
+				  <li><a class="text-muted" href="donation_widget.html">Donation Widget</a></li>
+				</ul>
+			</div>
+		  <div class="col-md-4 pt-4 my-md-4 pt-md-4">
+			<h5 class="text-muted">How to</h5>
+			<ul class="list-unstyled text-small">
+			  <li><a class="text-muted" href="import_a_private_key_into_blockchain_com.html">Import a Private Key into blockchain.com</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_btc_com.html">Import a Private Key into btc.com wallet</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_electrum_wallet.html">Import a Private Key into Electrum wallet</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_bitcoin-qt_app.html">Import a Private Key into Bitcoin-QT app</a></li>
+			  <li><a class="text-muted" href="import_a_private_key_into_armory.html">Import a Private Key into Armory</a></li>
+			  <li><a class="text-muted" href="generate_vanity_address.html">Generate vanity address</a></li>
+			</ul>
+		  </div>
+		  <div class="col-2 col-md pt-4 my-md-4 pt-md-4">
+			<h5 class="text-muted">About</h5>
+			<ul class="list-unstyled text-small">
+			  <li><a class="text-muted" href="price.html">Price</a></li>
+			  <li><a class="text-muted" href="faq.html">FAQ</a></li>
+			  <li><a class="text-muted" href="contact_us.html">Contact us</a></li>
+			</ul>
+		  </div>
+			<div class="col-md-1 d-none d-md-block" >
+			<img alt="Sloan, the sloth mascot" width="52" height="120" style="margin-top: -3px;" class="swing mb-5" src="static/i/sloth.png"><br>
+			<a href="https://apirone.com/" target="_blank" class="mt-5"><img src="static/i/apirone_logo_construction.svg" alt="Apirone crypto processing" class="img-fluid"/></a>
+			</div>
+		</div>
+	  </footer></div>
+
+<!--
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+-->
+
+<!-- Donation widget -->
+<script src="static/vue.min.js"></script>
+<script src="static/svgembedder.min.js"></script>
+<script src="static/etherium-qr-code.js"></script>
+<script src="static/donation-widget-script.js"></script>
+<!-- /Donation widget -->
+	
+<script src="static/jquery-3.5.1.slim.min.js"></script>
+<script src="static/popper.min.js"></script>
+<script src="static/bootstrap.min.js"></script>
+	
+<script src="static/animations.js"></script>
+<script>
+$(function(){
+  var btn = '<p><span class="currency">Bitcoin</span></p>';
+  $('.btn-bitcoin').each(function(){
+    $(this).append(btn);
+  });
+	$('.btn-bitcoin').click(function(event) {
+    	var that = this;
+    	$(this).addClass('opened');  
+    	$(this).children('p').children('.currency').text($(this).data('address'));	
+		$('html').one('click',function() {
+			$(that).removeClass('opened');
+			$(that).children('p').children('.currency').text('Bitcoin');	
+		});
+		event.stopPropagation();
+	});
+});
+</script>
+
+</body>
+
+<!-- Mirrored from www.vanitygen.net/donation_widget.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Sep 2021 01:50:23 GMT -->
+</html>
